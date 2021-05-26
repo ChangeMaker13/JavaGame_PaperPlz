@@ -19,8 +19,7 @@ public class MainWindow extends JFrame{
 		setVisible(true);
 		setLayout(new GridLayout(1,1));
 
-		gameWindow = new main_Routine();
-		add(gameWindow);
+		add(main_Routine.GetInstance());
 	}
 	
 	@Override

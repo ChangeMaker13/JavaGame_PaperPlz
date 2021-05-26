@@ -37,4 +37,10 @@ public class GImage extends GameObject {
 	public int getHeight() {
 		return image.getHeight(null);
 	}
+
+	@Override
+	public void Destroy() {
+		// TODO Auto-generated method stub
+		
+	}
 }

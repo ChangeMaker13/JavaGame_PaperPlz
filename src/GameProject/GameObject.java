@@ -1,7 +1,7 @@
 package GameProject;
 import java.awt.Graphics2D;
 
-public class GameObject {
+public abstract class GameObject {
 	
 	enum Type{
 		Button,
@@ -33,4 +33,6 @@ public class GameObject {
 	public void Render(Graphics2D g) {
 		
 	}
+	
+	abstract public void Destroy();
 }

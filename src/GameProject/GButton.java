@@ -14,6 +14,7 @@ public class GButton extends GameObject{
 	private ImageIcon normalIcon;
 	private ImageIcon activeIcon;
 	private JButton button;
+	private Container container;
 	
 	public interface clickAction{
 		public void act(MouseEvent event);
@@ -28,6 +29,7 @@ public class GButton extends GameObject{
 		
 		Initialize(x,y,width, height, action);
 		container.add(button);
+		this.container = container;
 	}
 	
 	private void Initialize(int x, int y, int width, int height, clickAction action) {
@@ -51,5 +53,10 @@ public class GButton extends GameObject{
 				action.act(event);
 			}
 		});
+	}
+
+	@Override
+	public void Destroy() {
+		container.remove(button);
 	}
 }

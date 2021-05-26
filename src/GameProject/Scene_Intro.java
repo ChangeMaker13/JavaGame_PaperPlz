@@ -15,8 +15,9 @@ public class Scene_Intro extends Scene {
 		GButton startBtn = new GButton("intro_startBtn_normal.PNG",
 				"intro_startBtn_pressed.PNG", frame, 50, 50, 150, 80,
 				(event) -> {
-					int a = 10;
+					main_Routine.GetInstance().NextScene(SCENE_TYPE.GAME);
 				});
 		Addobj(startBtn);
+		
 	}
 }

@@ -1,9 +1,10 @@
 package GameProject;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+import java.util.Iterator;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
+
 
 public abstract class Scene {
 	public enum SCENE_TYPE{
@@ -32,6 +33,34 @@ public abstract class Scene {
 		for(int i = 0; i < gRenderable.size(); i++) {
 			gRenderable.get(i).Render(g);
 		}
+	}
+	
+	static public Scene MakeScene(SCENE_TYPE type) {
+		Scene newScene;
+		
+		switch(type) {
+		case INTRO:
+			newScene = new Scene_Intro();
+			break;
+		case GAME:
+			newScene = new Scene_Game();
+			break;
+		default:
+			newScene = new Scene_Intro();
+			break;
+		}
+		
+		newScene.GameObjInit();
+		return newScene;
+	}
+	
+	public void DestroyScene() {
+		 Iterator<GameObject> iter = gRenderable.iterator();
+		 while(iter.hasNext()) {
+			 GameObject obj = iter.next();
+			 obj.Destroy();
+		 }
+		 gRenderable.clear();
 	}
 	
 	public abstract void GameObjInit();
