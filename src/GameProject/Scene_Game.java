@@ -7,7 +7,16 @@ public class Scene_Game extends Scene{
 
 	@Override
 	public void GameObjInit() {
-		// TODO Auto-generated method stub
+		//GameFlowMgr추가
+		GgameFlowMgr flowmgr = new GgameFlowMgr();
+		Addobj(flowmgr);
+		
+		//Timer text추가
+		GLabel timerText = 
+				new GLabel("awefawef", Main.WIDTH -150, 0,150, 50, 24, frame);
+		Addobj(timerText);
+		flowmgr.SetTimerText(timerText);
+		
 		
 	}
 }

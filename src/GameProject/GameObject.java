@@ -30,9 +30,5 @@ public abstract class GameObject {
 		ObjID = nextID++;
 	}
 	
-	public void Render(Graphics2D g) {
-		
-	}
-	
 	abstract public void Destroy();
 }

@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import javax.swing.ImageIcon;
 
-public class GImage extends GameObject {
+public class GImage extends GameObject implements Renderable{
 	private Image image;
 	private int xpos;
 	private int ypos;
