@@ -17,6 +17,8 @@ public class Scene_Game extends Scene{
 		Addobj(timerText);
 		flowmgr.SetTimerText(timerText);
 		
-		
+		//test
+		GEntrant one = new GEntrant(new EntrantData("park", "korea", "busan", "male"));
+		Addobj(one);
 	}
 }

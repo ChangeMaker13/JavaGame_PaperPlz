@@ -29,7 +29,6 @@ public class GImage extends GameObject implements Renderable{
 		ypos = y;
 	}
 	
-	
 	public int getWidth() {
 		return image.getWidth(null);
 	}

@@ -1,0 +1,23 @@
+package GameProject;
+
+public class EntrantData {
+	private String name;
+	private String country;
+	private String city;
+	private String sex;
+	
+	public EntrantData(String name, String country, String city, String sex) {
+		this.name = name;
+		this.country = country;
+		this.city = city;
+		this.sex = sex;
+	}
+
+	public EntrantData(EntrantData data) {
+		this(data.name, data.country, data.city, data.sex);
+	}
+
+	public String getName() {
+		return this.name;
+	}
+}

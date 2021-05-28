@@ -5,6 +5,7 @@ implements Movable{
 	public static final int SECINDAY = 10;
 	public static final int MAXDAY = 2;
 	
+	public EntrantsDataMgr entrantsDataMgr;
 	private int curday;
 	private Timer timer;
 	private GLabel timer_text;	//ref
@@ -14,6 +15,7 @@ implements Movable{
 		curday = 1;
 		timer = new Timer();
 		timer.Start(SECINDAY);
+		entrantsDataMgr = new EntrantsDataMgr();
 	}
 	
 	public void SetTimerText(GLabel label) {
@@ -22,6 +24,10 @@ implements Movable{
 
 	@Override
 	public void Progress() {
+		TimeCheck();
+	}
+	
+	private void TimeCheck() {
 		int remain = timer.GetRemain();
 		if(remain <= 0) {
 			curday += 1;
