@@ -9,7 +9,7 @@ public class GEntrant extends GameObject implements Renderable, Movable{
 	public static int XPOS = 20;
 	public static int YPOS = 10;
 	public static int WIDTH = 100;
-	public static int HEIGTH = 300;
+	public static int HEIGTH = 200;
 	
 	private EntrantData data;
 	private Image image;
@@ -25,6 +25,15 @@ public class GEntrant extends GameObject implements Renderable, Movable{
 		this.data = new EntrantData(data);
 		image = new ImageIcon(getClass().getClassLoader().getResource(data.getName() + ".jpg")).getImage();
 		scene = game_scene;
+	}
+	
+	public boolean IsMathWithPassPort() {
+		EntrantData passport_data = passport.getData();
+		if(!data.getName().equals(passport_data.getName())){
+			return false;
+		}
+		
+		return true;
 	}
 	
 	public void Progress() {
