@@ -9,9 +9,6 @@ public class Scene_Game extends Scene{
 
 	@Override
 	public void GameObjInit() {
-		//score, day init
-		Scene.common_info.put("score", 0);
-		Scene.common_info.put("day", 0);
 		
 		//GameFlowMgr√ﬂ∞°
 		GgameFlowMgr flowmgr = new GgameFlowMgr();

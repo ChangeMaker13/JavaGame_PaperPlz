@@ -15,7 +15,9 @@ public class Scene_Intro extends Scene {
 		GButton startBtn = new GButton("intro_startBtn_normal.PNG",
 				"intro_startBtn_pressed.PNG", frame, 50, 50, 160, 80,
 				(event) -> {
-					main_Routine.GetInstance().NextScene(SCENE_TYPE.GAME);
+					Scene.common_info.put("score", 0);
+					Scene.common_info.put("day", 1);
+					main_Routine.GetInstance().NextScene(SCENE_TYPE.DAY);
 				});
 		Addobj(startBtn);
 		
@@ -31,6 +33,8 @@ public class Scene_Intro extends Scene {
 				"intro_loadBtn_pressed.PNG", frame, 50, 130, 140, 80,
 				(event) -> {
 				//	main_Routine.GetInstance().NextScene(SCENE_TYPE.GAME);
+					Scene.common_info.put("score", 1);
+					Scene.common_info.put("day", 3);
 					main_Routine.GetInstance().NextScene(SCENE_TYPE.DAY);
 				});
 		Addobj(loadBtn);
