@@ -12,6 +12,6 @@ public class Main {
 	public static final int HCENTER = HEIGHT/2;
 	
 	public static void main(String[] args) {
-		MainWindow window = new MainWindow();
+		new MainWindow();
 	}
 }

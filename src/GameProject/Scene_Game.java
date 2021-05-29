@@ -12,8 +12,7 @@ public class Scene_Game extends Scene{
 		Addobj(flowmgr);
 		
 		//Timer text√ﬂ∞°
-		GLabel timerText = 
-				new GLabel("awefawef", Main.WIDTH -150, 0,150, 50, 24, frame);
+		GLabel timerText = new GLabel("TIMETEXT ERROR", Main.WIDTH -150, 0,150, 50, 24, frame);
 		Addobj(timerText);
 		flowmgr.SetTimerText(timerText);
 		

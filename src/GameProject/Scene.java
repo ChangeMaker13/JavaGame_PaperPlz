@@ -12,7 +12,8 @@ import javax.swing.JPanel;
 public abstract class Scene {
 	public enum SCENE_TYPE{
 		INTRO,
-		GAME
+		GAME,
+		ENDING
 	}
 	
 	public static JPanel frame;
@@ -81,6 +82,9 @@ public abstract class Scene {
 		case GAME:
 			newScene = new Scene_Game();
 			break;
+		case ENDING:
+			newScene = new Scene_Ending();
+			break;
 		default:
 			newScene = new Scene_Intro();
 			break;
@@ -103,6 +107,8 @@ public abstract class Scene {
 			 obj.Destroy();
 		 }
 		 gObjects.clear();
+		 gRenderable.clear();
+		 gMovable.clear();
 	}
 	
 	public abstract void GameObjInit();
