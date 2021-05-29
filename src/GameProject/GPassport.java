@@ -42,6 +42,10 @@ public class GPassport extends GameObject implements Renderable{
 		this.stamp = stamp;
 	}
 	
+	public EntrantData getData() {
+		return data;
+	}
+	
 	@Override
 	public void Destroy() {
 	}

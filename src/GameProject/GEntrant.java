@@ -27,6 +27,15 @@ public class GEntrant extends GameObject implements Renderable, Movable{
 		scene = game_scene;
 	}
 	
+	public boolean IsMathWithPassPort() {
+		EntrantData passport_data = passport.getData();
+		if(!data.getName().equals(passport_data.getName())){
+			return false;
+		}
+		
+		return true;
+	}
+	
 	public void Progress() {
 		if(arrive) return;
 		if(scale >= 3) {
