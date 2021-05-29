@@ -9,6 +9,9 @@ public class Scene_Game extends Scene{
 
 	@Override
 	public void GameObjInit() {
+		//background
+		GImage background = new GImage("airport.jpg",0,0);
+		Addobj(background);
 		
 		//GameFlowMgr√ﬂ∞°
 		GgameFlowMgr flowmgr = new GgameFlowMgr(this);

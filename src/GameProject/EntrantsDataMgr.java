@@ -52,9 +52,12 @@ public class EntrantsDataMgr {
 			entrants.add(newEntrant);
 		}
 	}
-
+	
 	public EntrantData getRandomEntrant() {
-		return entrants.get((int)(Math.random()*(entrants.size())-1));
+		int randomNumber = (int)(Math.random()*entrants.size());
+		while(randomNumber == 5)
+			randomNumber = (int)(Math.random()*entrants.size());
+		return entrants.get(randomNumber);
 	}
 	
 	
