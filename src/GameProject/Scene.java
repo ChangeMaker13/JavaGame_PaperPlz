@@ -14,7 +14,8 @@ public abstract class Scene {
 	public enum SCENE_TYPE{
 		INTRO,
 		GAME,
-		ENDING
+		ENDING,
+		DAY
 	}
 	
 	public static HashMap<String, Object> common_info = new HashMap<String, Object>();
@@ -26,6 +27,7 @@ public abstract class Scene {
 	//Renderable interface를 상속한 object에 대한 reference를 따로 가지고 있음
 	protected ArrayList<Renderable> gRenderable = new ArrayList<Renderable>();
 	protected ArrayList<Movable> gMovable = new ArrayList<Movable>();
+	protected ArrayList<Thread> gThread = new ArrayList<Thread>();
 	
 	//movable object의 progress를 주기적으로 실행시켜주기 위한 thread
 	private ScheduledExecutorService scheduleService = 
@@ -54,6 +56,10 @@ public abstract class Scene {
 		if(obj instanceof Movable) {
 			gMovable.add((Movable)obj);
 		}
+	}
+	
+	public void AddThread(Thread thread) {
+		gThread.add(thread);
 	}
 	
 	public void RemoveObj(GameObject obj) {
@@ -87,6 +93,9 @@ public abstract class Scene {
 		case ENDING:
 			newScene = new Scene_Ending();
 			break;
+		case DAY:
+			newScene = new Scene_Day();
+			break;
 		default:
 			newScene = new Scene_Intro();
 			break;
@@ -109,9 +118,13 @@ public abstract class Scene {
 			 GameObject obj = iter.next();
 			 obj.Destroy();
 		 }
+		 for(int i = 0; i < gThread.size(); i++) {
+			 gThread.get(i).interrupt();
+		 }
 		 gObjects.clear();
 		 gRenderable.clear();
 		 gMovable.clear();
+		 gThread.clear();
 	}
 	
 	

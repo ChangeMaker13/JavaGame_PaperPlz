@@ -60,8 +60,10 @@ public class GJudge extends GameObject{
 		scene.RemoveObj(this);
 		Timer.setTimeout(() -> scene.RemoveObj(judge_objective), 1000);
 		Timer.setTimeout(() -> scene.RemoveObj(judge_objective.getPassport()), 1000);
-		Timer.setTimeout(() -> game_mgr.GenerateNewEntrant(), 1000);
+		Thread genThread = Timer.setTimeout(() -> game_mgr.GenerateNewEntrant(), 1000);
+		scene.AddThread(genThread);
 		System.out.println("score : " + (int)Scene.common_info.get("score"));
+		
 	}
 
 	@Override

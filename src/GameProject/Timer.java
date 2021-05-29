@@ -31,14 +31,16 @@ public class Timer implements Runnable{
 		return remain_sec;
 	}
 	
-	public static void setTimeout(Runnable runnable, int delay) {
-		new Thread(()->{
+	public static Thread setTimeout(Runnable runnable, int delay) {
+		Thread thread = new Thread(()->{
 			try {
 				Thread.sleep(delay);
 				runnable.run();
 			}catch(InterruptedException e) {
 				System.err.println(e);
 			}
-		}).start();
+		});
+		thread.start();
+		return thread;
 	}
 }
