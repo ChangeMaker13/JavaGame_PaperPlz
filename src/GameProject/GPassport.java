@@ -13,11 +13,12 @@ public class GPassport extends GameObject implements Renderable{
 	private EntrantData data;
 	Image passport_frame;
 	Image portrait;
+	Image stamp = null;
 	
 	public GPassport(EntrantData data) {
 		super(Type.ETC);
 		this.data = data;
-		passport_frame = new  ImageIcon(getClass().getClassLoader().getResource("passport.jpg")).getImage(); 
+		passport_frame = new ImageIcon(getClass().getClassLoader().getResource("passport.jpg")).getImage(); 
 		portrait = new ImageIcon(getClass().getClassLoader().getResource(data.getName() +".jpg")).getImage(); 
 	}
 	
@@ -30,6 +31,14 @@ public class GPassport extends GameObject implements Renderable{
 		g.drawString("COUNTRY:"+data.getCountry(), OFFX+180, OFFY+130);
 		g.drawString("CITY:"+data.getCity(), OFFX+180, OFFY+160);
 		g.drawString("SEX:"+data.getSex(), OFFX+180, OFFY+190);
+		
+		if(stamp != null) {
+			g.drawImage(stamp, OFFX+200, OFFY+100, 250,125, null);
+		}
+	}
+	
+	public void SetStamp(Image stamp) {
+		this.stamp = stamp;
 	}
 	
 	@Override

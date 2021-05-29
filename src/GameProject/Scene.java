@@ -53,6 +53,18 @@ public abstract class Scene {
 		}
 	}
 	
+	public void RemoveObj(GameObject obj) {
+		obj.Destroy();
+		System.out.println(gObjects.remove(obj));
+		
+		if(obj instanceof Renderable) {
+			System.out.println(gRenderable.remove(obj));
+		}
+		if(obj instanceof Movable) {
+			System.out.println(gMovable.remove(obj));
+		}
+	}
+	
 	public void Render(Graphics2D g) {
 		for(int i = 0; i < gRenderable.size(); i++) {
 			gRenderable.get(i).Render(g);

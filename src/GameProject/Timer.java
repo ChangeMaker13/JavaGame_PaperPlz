@@ -10,7 +10,7 @@ public class Timer implements Runnable{
 	@Override
 	public void run() {
 		try {
-			thread.sleep(1000);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -28,5 +28,16 @@ public class Timer implements Runnable{
 	
 	public int GetRemain() {
 		return remain_sec;
+	}
+	
+	public static void setTimeout(Runnable runnable, int delay) {
+		new Thread(()->{
+			try {
+				Thread.sleep(delay);
+				runnable.run();
+			}catch(InterruptedException e) {
+				System.err.println(e);
+			}
+		}).start();
 	}
 }

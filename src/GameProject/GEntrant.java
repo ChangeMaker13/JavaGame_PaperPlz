@@ -16,6 +16,7 @@ public class GEntrant extends GameObject implements Renderable, Movable{
 	private double scale = 1.0;
 	private double vert_coeff = 0.0;
 	private boolean arrive = false;
+	private GPassport passport;
 	
 	private Scene scene;
 
@@ -30,10 +31,9 @@ public class GEntrant extends GameObject implements Renderable, Movable{
 		if(arrive) return;
 		if(scale >= 3) {
 			arrive = true;
-			GPassport passport = new GPassport(data);
-			scene.Addobj(passport);
-			
-			
+			GPassport pass = new GPassport(data);
+			passport = pass;
+			scene.Addobj(pass);
 			
 			return;
 		}
@@ -49,6 +49,10 @@ public class GEntrant extends GameObject implements Renderable, Movable{
 	
 	public EntrantData getData() {
 		return new EntrantData(data);
+	}
+	
+	public GPassport getPassport() {
+		return passport;
 	}
 	
 	public void Destroy() {}
