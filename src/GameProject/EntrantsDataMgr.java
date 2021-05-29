@@ -50,4 +50,9 @@ public class EntrantsDataMgr {
 			entrants.add(newEntrant);
 		}
 	}
+
+	public EntrantData getRandomEntrant() {
+		int randomgenint = (int)(Math.random()*5);
+		return entrants.get(randomgenint);
+	}
 }

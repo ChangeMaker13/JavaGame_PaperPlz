@@ -17,8 +17,13 @@ public class Scene_Game extends Scene{
 		flowmgr.SetTimerText(timerText);
 		
 		//test
-		GEntrant one = new GEntrant(new EntrantData("park", "korea", "busan", "male"), this);
+		//GEntrant one = new GEntrant(new EntrantData("park", "korea", "busan", "male"), this);
+		//Addobj(one);
+		
+		GEntrant one = new GEntrant(flowmgr.entrantsDataMgr.getRandomEntrant(), this);
 		Addobj(one);
+		
+		
 		
 		GJudge judge = new GJudge(this, one);
 		Addobj(judge);
