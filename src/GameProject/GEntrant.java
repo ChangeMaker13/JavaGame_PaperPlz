@@ -9,7 +9,7 @@ public class GEntrant extends GameObject implements Renderable, Movable{
 	public static int XPOS = 20;
 	public static int YPOS = 10;
 	public static int WIDTH = 100;
-	public static int HEIGTH = 300;
+	public static int HEIGTH = 200;
 	
 	private EntrantData data;
 	private Image image;
