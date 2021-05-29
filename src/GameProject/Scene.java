@@ -13,7 +13,8 @@ public abstract class Scene {
 	public enum SCENE_TYPE{
 		INTRO,
 		GAME,
-		ENDING
+		ENDING,
+		DAY
 	}
 	
 	public static JPanel frame;
@@ -84,6 +85,9 @@ public abstract class Scene {
 			break;
 		case ENDING:
 			newScene = new Scene_Ending();
+			break;
+		case DAY:
+			newScene = new Scene_Day();
 			break;
 		default:
 			newScene = new Scene_Intro();

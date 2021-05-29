@@ -1,5 +1,7 @@
 package GameProject;
 
+import GameProject.Scene.SCENE_TYPE;
+
 public class Scene_Game extends Scene{
 	public Scene_Game() {
 		super("Game");
@@ -22,5 +24,8 @@ public class Scene_Game extends Scene{
 		
 		GJudge judge = new GJudge(this, one);
 		Addobj(judge);
+		
+		if (GgameFlowMgr.SECINDAY == 0)
+			main_Routine.GetInstance().NextScene(SCENE_TYPE.GAME);
 	}
 }

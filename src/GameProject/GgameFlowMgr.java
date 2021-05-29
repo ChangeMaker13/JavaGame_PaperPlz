@@ -6,8 +6,8 @@ import GameProject.Scene.SCENE_TYPE;
 
 public class GgameFlowMgr extends GameObject 
 implements Movable{
-	public static final int SECINDAY = 3;
-	public static final int MAXDAY = 1;
+	public static final int SECINDAY = 10;
+	public static final int MAXDAY = 5;
 
 	public EntrantsDataMgr entrantsDataMgr;
 	private int curday;
@@ -38,8 +38,7 @@ implements Movable{
 		else {
 		int remain = timer.GetRemain();
 		if(remain <= 0) {
-			curday += 1;
-			timer.Start(SECINDAY);
+			main_Routine.GetInstance().NextScene(SCENE_TYPE.DAY);	
 		}
 		String str = Integer.toString(curday) + " Day, " + Integer.toString(remain);
 		timer_text.resetText(str);

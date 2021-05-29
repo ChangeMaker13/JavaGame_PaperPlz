@@ -4,7 +4,7 @@ public class Scene_Intro extends Scene {
 	public Scene_Intro() {
 		super("Intro");
 	}
-
+	Scene_Help help_frame;
 	@Override
 	public void GameObjInit() {
 		//background
@@ -30,14 +30,15 @@ public class Scene_Intro extends Scene {
 		GButton loadBtn = new GButton("intro_loadBtn_normal.PNG",
 				"intro_loadBtn_pressed.PNG", frame, 50, 130, 140, 80,
 				(event) -> {
-					main_Routine.GetInstance().NextScene(SCENE_TYPE.GAME);
+				//	main_Routine.GetInstance().NextScene(SCENE_TYPE.GAME);
+					main_Routine.GetInstance().NextScene(SCENE_TYPE.DAY);
 				});
 		Addobj(loadBtn);
 		
 		GButton helpBtn = new GButton("intro_helpBtn_normal.PNG",
 				"intro_helpBtn_pressed.PNG", frame, 930, 50, 40, 80,
 				(event) -> {
-					main_Routine.GetInstance().NextScene(SCENE_TYPE.GAME);
+					help_frame = new Scene_Help();
 				});
 		Addobj(helpBtn);
 	}
