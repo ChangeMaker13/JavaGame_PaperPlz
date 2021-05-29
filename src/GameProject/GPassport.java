@@ -13,7 +13,6 @@ public class GPassport extends GameObject implements Renderable{
 	private EntrantData data;
 	Image passport_frame;
 	Image portrait;
-
 	public GPassport(EntrantData data) {
 		super(Type.ETC);
 		passport_frame = new  ImageIcon(getClass().getClassLoader().getResource("passport.jpg")).getImage(); 
