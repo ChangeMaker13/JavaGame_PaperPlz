@@ -27,6 +27,7 @@ public class GPassport extends GameObject implements Renderable{
 		g.drawImage(passport_frame, OFFX, OFFY, 500,300, null);
 		g.drawImage(portrait, OFFX+10, OFFY+70, 150,200, null);
 		g.setFont(new Font("SanSerif", Font.PLAIN, 20));
+
 		g.drawString("NAME:"+data.getName(), OFFX+180, OFFY+100);
 		g.drawString("COUNTRY:"+data.getCountry(), OFFX+180, OFFY+130);
 		g.drawString("CITY:"+data.getCity(), OFFX+180, OFFY+160);
