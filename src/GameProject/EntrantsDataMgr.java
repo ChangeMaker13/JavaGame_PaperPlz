@@ -57,6 +57,7 @@ public class EntrantsDataMgr {
 		return entrants.get((int)(Math.random()*(entrants.size())-1));
 	}
 	
+	
 	public void whoiscriminal() {
 		criminalindex = (int)(Math.random()*entrants.size());
 	}

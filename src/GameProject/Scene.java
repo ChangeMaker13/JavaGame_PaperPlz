@@ -30,6 +30,7 @@ public abstract class Scene {
 	//movable object의 progress를 주기적으로 실행시켜주기 위한 thread
 	private ScheduledExecutorService scheduleService = 
 			Executors.newScheduledThreadPool(1);
+	
 	private Runnable frameAction = new Runnable() {
 		@Override
 		public void run() {
@@ -39,7 +40,6 @@ public abstract class Scene {
 	
 	public Scene(String name) {
 		SceneName = name;
-		scheduleService.scheduleAtFixedRate(frameAction, 0, 10, TimeUnit.MILLISECONDS);
 	}
 	public static void SetFrame(JPanel fra) {
 		frame = fra;
@@ -93,6 +93,7 @@ public abstract class Scene {
 		}
 		
 		newScene.GameObjInit();
+		newScene.scheduleService.scheduleAtFixedRate(newScene.frameAction, 100, 10, TimeUnit.MILLISECONDS);
 		return newScene;
 	}
 	

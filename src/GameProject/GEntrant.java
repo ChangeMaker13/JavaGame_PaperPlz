@@ -18,11 +18,13 @@ public class GEntrant extends GameObject implements Renderable, Movable{
 	private boolean arrive = false;
 	private GPassport passport;
 	
-	private Scene scene;
+	private Scene scene;	//ref
+	private GgameFlowMgr game_mgr;
 
-	public GEntrant(EntrantData data, Scene game_scene) {
+	public GEntrant(EntrantData data, Scene game_scene, GgameFlowMgr game_mgr) {
 		super(Type.ETC);
 		this.data = new EntrantData(data);
+		this.game_mgr = game_mgr;
 		image = new ImageIcon(getClass().getClassLoader().getResource(data.getName() + "_real.jpg")).getImage();
 		scene = game_scene;
 	}
@@ -40,9 +42,13 @@ public class GEntrant extends GameObject implements Renderable, Movable{
 		if(arrive) return;
 		if(scale >= 3) {
 			arrive = true;
+			
 			GPassport pass = new GPassport(data);
 			passport = pass;
 			scene.Addobj(pass);
+			
+			GJudge judge = new GJudge(scene, this, game_mgr);
+			scene.Addobj(judge);
 			
 			return;
 		}

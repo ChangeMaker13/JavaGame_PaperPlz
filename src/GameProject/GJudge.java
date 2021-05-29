@@ -13,11 +13,13 @@ public class GJudge extends GameObject{
 	private GButton deny_btn;
 	private GEntrant judge_objective;
 	
+	private GgameFlowMgr game_mgr; //ref
 
-	public GJudge(Scene scene, GEntrant judge_objective) {
+	public GJudge(Scene scene, GEntrant judge_objective, GgameFlowMgr game_mgr) {
 		super(Type.ETC);
 		this.scene = scene;
 		this.judge_objective = judge_objective;
+		this.game_mgr = game_mgr;
 		
 		//accept button
 		accept_btn = new GButton("accept_normal.jpg",
@@ -58,6 +60,7 @@ public class GJudge extends GameObject{
 		scene.RemoveObj(this);
 		Timer.setTimeout(() -> scene.RemoveObj(judge_objective), 1000);
 		Timer.setTimeout(() -> scene.RemoveObj(judge_objective.getPassport()), 1000);
+		Timer.setTimeout(() -> game_mgr.GenerateNewEntrant(), 1000);
 		System.out.println("score : " + (int)Scene.common_info.get("score"));
 	}
 

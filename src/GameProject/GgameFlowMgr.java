@@ -13,13 +13,15 @@ implements Movable{
 	private int curday;
 	private Timer timer;
 	private GLabel timer_text;	//ref
+	private Scene game_scene; 	//ref
 	
-	public GgameFlowMgr() {
+	public GgameFlowMgr(Scene scene) {
 		super(Type.ETC);
 		curday = 1;
 		timer = new Timer();
 		timer.Start(SECINDAY);
 		entrantsDataMgr = new EntrantsDataMgr();
+		game_scene = scene;
 	}
 	
 	public void SetTimerText(GLabel label) {
@@ -44,6 +46,11 @@ implements Movable{
 		String str = Integer.toString(curday) + " Day, " + Integer.toString(remain);
 		timer_text.resetText(str);
 		}
+	}
+	
+	public void GenerateNewEntrant() {
+		GEntrant entrant = new GEntrant(entrantsDataMgr.getRandomEntrant(), game_scene, this);
+		game_scene.Addobj(entrant);
 	}
 
 	@Override

@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import GameProject.Scene.SCENE_TYPE;
 
 public class main_Routine extends JPanel{
-	private Scene scene = new Scene_Intro();
+	private Scene scene;
 	private Image screenImage;
 	private Graphics screenGraphic;
 	
@@ -25,7 +25,7 @@ public class main_Routine extends JPanel{
 		setPreferredSize(new Dimension(Main.WIDTH, Main.HEIGHT));
 		setLayout(null);
 		Scene.SetFrame(this);
-		scene.GameObjInit();
+		scene = Scene.MakeScene(SCENE_TYPE.INTRO);
 	}
 	
 	public void paint(Graphics g) {

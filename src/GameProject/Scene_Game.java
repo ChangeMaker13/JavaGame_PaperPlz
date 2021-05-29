@@ -12,7 +12,7 @@ public class Scene_Game extends Scene{
 		Scene.common_info.put("day", 0);
 		
 		//GameFlowMgr추가
-		GgameFlowMgr flowmgr = new GgameFlowMgr();
+		GgameFlowMgr flowmgr = new GgameFlowMgr(this);
 		Addobj(flowmgr);
 		
 		//Timer text추가
@@ -24,11 +24,7 @@ public class Scene_Game extends Scene{
 		//GEntrant one = new GEntrant(new EntrantData("park", "korea", "busan", "male"), this);
 		//Addobj(one);
 		
-		System.out.println(flowmgr.entrantsDataMgr.getRandomEntrant().getName());
-		GEntrant one = new GEntrant(flowmgr.entrantsDataMgr.getRandomEntrant(), this);
-		Addobj(one);
-		
-		GJudge judge = new GJudge(this, one);
-		Addobj(judge);
+		GEntrant entrant = new GEntrant(flowmgr.entrantsDataMgr.getRandomEntrant(), this, flowmgr);
+		Addobj(entrant);
 	}
 }
