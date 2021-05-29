@@ -1,5 +1,6 @@
 package GameProject;
 
+
 public class Timer implements Runnable{
 	private int remain_sec;
 	private Thread thread;
