@@ -18,6 +18,5 @@ public class Scene_Intro extends Scene {
 					main_Routine.GetInstance().NextScene(SCENE_TYPE.GAME);
 				});
 		Addobj(startBtn);
-		
 	}
 }
