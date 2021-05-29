@@ -20,4 +20,13 @@ public class EntrantData {
 	public String getName() {
 		return this.name;
 	}
+	public String getCountry() {
+		return this.country;
+	}
+	public String getCity() {
+		return this.city;
+	}
+	public String getSex() {
+		return this.sex;
+	}
 }
