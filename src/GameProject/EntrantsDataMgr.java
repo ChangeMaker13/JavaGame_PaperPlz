@@ -10,6 +10,8 @@ import GameProject.GameObject.Type;
 
 public class EntrantsDataMgr {
 	private String filePath = "./GameData/entrants_data.csv";
+	public boolean CriminalIn = false;
+	private int criminalindex;
 	public ArrayList<EntrantData> entrants = new ArrayList<EntrantData>();
 	
 	public EntrantsDataMgr() {
@@ -52,7 +54,16 @@ public class EntrantsDataMgr {
 	}
 
 	public EntrantData getRandomEntrant() {
-		int randomgenint = (int)(Math.random()*5);
-		return entrants.get(randomgenint);
+		return entrants.get((int)(Math.random()*(entrants.size())-1));
+	}
+	
+	public void whoiscriminal() {
+		criminalindex = (int)(Math.random()*entrants.size());
+	}
+	
+	public void iscriminal(int entrantindex) {
+		if(criminalindex == entrantindex) {
+			
+		}
 	}
 }

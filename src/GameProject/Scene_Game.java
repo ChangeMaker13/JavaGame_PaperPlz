@@ -7,10 +7,6 @@ public class Scene_Game extends Scene{
 
 	@Override
 	public void GameObjInit() {
-		//score, day info init
-		Scene.common_info.put("score", 0);
-		Scene.common_info.put("day", 0);
-		
 		//GameFlowMgr√ﬂ∞°
 		GgameFlowMgr flowmgr = new GgameFlowMgr();
 		Addobj(flowmgr);
@@ -24,10 +20,9 @@ public class Scene_Game extends Scene{
 		//GEntrant one = new GEntrant(new EntrantData("park", "korea", "busan", "male"), this);
 		//Addobj(one);
 		
+		System.out.println(flowmgr.entrantsDataMgr.getRandomEntrant().getName());
 		GEntrant one = new GEntrant(flowmgr.entrantsDataMgr.getRandomEntrant(), this);
 		Addobj(one);
-		
-		
 		
 		GJudge judge = new GJudge(this, one);
 		Addobj(judge);

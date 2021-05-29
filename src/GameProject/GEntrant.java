@@ -23,7 +23,7 @@ public class GEntrant extends GameObject implements Renderable, Movable{
 	public GEntrant(EntrantData data, Scene game_scene) {
 		super(Type.ETC);
 		this.data = new EntrantData(data);
-		image = new ImageIcon(getClass().getClassLoader().getResource(data.getName() + ".jpg")).getImage();
+		image = new ImageIcon(getClass().getClassLoader().getResource(data.getName() + "_real.jpg")).getImage();
 		scene = game_scene;
 	}
 	
