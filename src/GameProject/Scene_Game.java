@@ -20,5 +20,8 @@ public class Scene_Game extends Scene{
 		//test
 		GEntrant one = new GEntrant(new EntrantData("park", "korea", "busan", "male"), this);
 		Addobj(one);
+		
+		GJudge judge = new GJudge(this);
+		Addobj(judge);
 	}
 }

@@ -15,6 +15,7 @@ public class GEntrant extends GameObject implements Renderable, Movable{
 	private Image image;
 	private double scale = 1.0;
 	private double vert_coeff = 0.0;
+	private boolean arrive = false;
 	
 	private Scene scene;
 
@@ -26,21 +27,29 @@ public class GEntrant extends GameObject implements Renderable, Movable{
 	}
 	
 	public void Progress() {
+		if(arrive) return;
 		if(scale >= 3) {
+			arrive = true;
 			GPassport passport = new GPassport(data);
 			scene.Addobj(passport);
+			
+			
+			
 			return;
 		}
 		scale += 0.01;
 		vert_coeff += 0.1;
 	}
+	
 	public void Render(Graphics2D g) {
 		double ymove = Math.cos(vert_coeff);
 		g.drawImage(image, XPOS, (int)(YPOS + ymove * 10),
 				(int)(WIDTH * scale), (int)(HEIGTH * scale), null);
 	}
+	
 	public EntrantData getData() {
 		return new EntrantData(data);
 	}
+	
 	public void Destroy() {}
 }
