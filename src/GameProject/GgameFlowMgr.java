@@ -13,7 +13,7 @@ implements Movable{
 	private int curday;
 	private Timer timer;
 	private GLabel timer_text;	//ref
-
+	
 	public GgameFlowMgr() {
 		super(Type.ETC);
 		curday = 1;
@@ -21,16 +21,16 @@ implements Movable{
 		timer.Start(SECINDAY);
 		entrantsDataMgr = new EntrantsDataMgr();
 	}
-
+	
 	public void SetTimerText(GLabel label) {
 		timer_text = label;
 	}
-
+	
 	@Override
 	public void Progress() {
 		TimeCheck();
 	}
-
+	
 	private void TimeCheck() {
 		if(curday > MAXDAY) {
 			main_Routine.GetInstance().NextScene(SCENE_TYPE.ENDING);

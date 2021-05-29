@@ -19,7 +19,7 @@ public class GPassport extends GameObject implements Renderable{
 		super(Type.ETC);
 		this.data = data;
 		passport_frame = new ImageIcon(getClass().getClassLoader().getResource("passport.jpg")).getImage(); 
-		portrait = new ImageIcon(getClass().getClassLoader().getResource(data.getName() +".jpg")).getImage(); 
+		portrait = new ImageIcon(getClass().getClassLoader().getResource(data.getName() +"_pass.jpg")).getImage(); 
 	}
 	
 	@Override
@@ -40,6 +40,10 @@ public class GPassport extends GameObject implements Renderable{
 	
 	public void SetStamp(Image stamp) {
 		this.stamp = stamp;
+	}
+	
+	public EntrantData getData() {
+		return data;
 	}
 	
 	@Override

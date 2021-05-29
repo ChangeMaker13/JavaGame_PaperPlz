@@ -1,6 +1,7 @@
 package GameProject;
 
 public class Scene_Ending extends Scene {
+	private static int PromotionScore;
 	public Scene_Ending() {
 		super("End");
 	}
@@ -15,8 +16,16 @@ public class Scene_Ending extends Scene {
 		GLabel resultTag = new GLabel("Result", Main.WCENTER - 102, 20, 150, 50, 48, frame);
 		Addobj(resultTag);
 		
-		ResultText += "SUSPENDED!!";
-		GLabel result = new GLabel(ResultText, Main.WCENTER - 102,68, 150, 50 , 60, frame);
+		int totalScore = 300;
+		int Betrayer = 4;
+		if(totalScore < 0)
+			ResultText = "SUSPENDED!!";
+		else if(totalScore > 200)
+			ResultText = "<html>You have got promoted<br>Congratulations!</html>";
+		else {
+			ResultText = "You're ganna Fired\nFuckYou!";
+		}
+		GLabel result = new GLabel(ResultText, 20, 20, Main.WIDTH - 300, 400, 40, frame);
 		Addobj(result);
 		
 		//Main menu button

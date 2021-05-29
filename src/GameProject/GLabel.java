@@ -15,7 +15,6 @@ public class GLabel extends GameObject{
 		label.setBounds(x,y,width, height);
 		Font font = label.getFont();
 		label.setFont(new Font(font.getName(), font.getStyle(), fontsize));
-
 		container.add(label);
 	}
 	

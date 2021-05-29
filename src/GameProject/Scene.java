@@ -1,6 +1,7 @@
 package GameProject;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -17,6 +18,7 @@ public abstract class Scene {
 		DAY
 	}
 	
+	public static HashMap<String, Object> common_info = new HashMap<String, Object>();
 	public static JPanel frame;
 	
 	protected String SceneName;
@@ -114,6 +116,7 @@ public abstract class Scene {
 		 gRenderable.clear();
 		 gMovable.clear();
 	}
+	
 	
 	public abstract void GameObjInit();
 }

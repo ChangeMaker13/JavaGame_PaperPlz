@@ -12,7 +12,7 @@ public class EntrantData {
 		this.city = city;
 		this.sex = sex;
 	}
-
+	
 	public EntrantData(EntrantData data) {
 		this(data.name, data.country, data.city, data.sex);
 	}
