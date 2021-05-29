@@ -1,7 +1,7 @@
 package GameProject;
 
 public class Scene_Ending extends Scene {
-	private static int PromotionScore;
+	private static final int PromotionScore = 20;
 	public Scene_Ending() {
 		super("End");
 	}
@@ -16,21 +16,22 @@ public class Scene_Ending extends Scene {
 		GLabel resultTag = new GLabel("Result", Main.WCENTER - 102, 20, 150, 50, 48, frame);
 		Addobj(resultTag);
 		
-		int totalScore = 300;
-		int Betrayer = 4;
+		int totalScore = (int)Scene.common_info.get("score");
+		
 		if(totalScore < 0)
-			ResultText = "SUSPENDED!!";
-		else if(totalScore > 200)
+			ResultText = "<html><br>SUSPENDED!!</html>";
+		else if(totalScore > PromotionScore) {
 			ResultText = "<html>You have got promoted<br>Congratulations!</html>";
+		}
 		else {
-			ResultText = "You're ganna Fired\nFuckYou!";
+			ResultText = "<html>You're ganna Fired<br>FuckYou!</html>";
 		}
 		GLabel result = new GLabel(ResultText, 20, 20, Main.WIDTH - 300, 400, 40, frame);
 		Addobj(result);
 		
 		//Main menu button
-		GButton MainmenuBtn = new GButton("intro_startBtn_normal.PNG",
-				"intro_startBtn_normal.PNG", frame, Main.HEIGHT - 150, Main.WCENTER - 80, 150, 80,
+		GButton MainmenuBtn = new GButton("mainmenu_normal.PNG",
+				"mainmenu_pressed.PNG", frame, Main.HEIGHT - 150, Main.WCENTER - 100, 160, 140,
 				(event) -> {
 					main_Routine.GetInstance().NextScene(SCENE_TYPE.INTRO);
 				});

@@ -34,7 +34,7 @@ public class Scene_Intro extends Scene {
 				(event) -> {
 				//	main_Routine.GetInstance().NextScene(SCENE_TYPE.GAME);
 					Scene.common_info.put("score", 1);
-					Scene.common_info.put("day", 3);
+					Scene.common_info.put("day", 8);
 					main_Routine.GetInstance().NextScene(SCENE_TYPE.DAY);
 				});
 		Addobj(loadBtn);
