@@ -1,7 +1,9 @@
 package GameProject;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
+
 import javax.swing.JLabel;
 
 public class GLabel extends GameObject{

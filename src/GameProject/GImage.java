@@ -11,6 +11,8 @@ public class GImage extends GameObject implements Renderable{
 	private Image image;
 	private int xpos;
 	private int ypos;
+	private int width = -1;
+	private int height = -1;
 
 	public GImage(String fileName, int x, int y) {
 		super(Type.Image);
@@ -20,8 +22,19 @@ public class GImage extends GameObject implements Renderable{
 		ypos = y;
 	}
 	
+	public GImage(String fileName, int x, int y, int w, int h) {
+		super(Type.Image);
+
+		image = new ImageIcon(getClass().getClassLoader().getResource(fileName)).getImage(); 
+		xpos = x;
+		ypos = y;
+		width = w;
+		height = h;
+	}
+	
 	public void Render(Graphics2D g) {
-		g.drawImage(image, xpos, ypos, null);
+		if(width == -1)	g.drawImage(image, xpos, ypos, null);
+		else g.drawImage(image, xpos, ypos, width, height, null);
 	}
 	
 	public void setPos(int x, int y) {

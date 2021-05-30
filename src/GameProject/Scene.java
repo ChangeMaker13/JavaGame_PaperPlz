@@ -62,15 +62,21 @@ public abstract class Scene {
 		gThread.add(thread);
 	}
 	
-	public void RemoveObj(GameObject obj) {
-		obj.Destroy();
-		System.out.println(gObjects.remove(obj));
-		
-		if(obj instanceof Renderable) {
-			System.out.println(gRenderable.remove(obj));
+	public synchronized void RemoveObj(GameObject obj) {
+		try {
+			gObjects.remove(obj);
+			
+			if(obj instanceof Renderable) {
+				gRenderable.remove(obj);
+			}
+			if(obj instanceof Movable) {
+				gMovable.remove(obj);
+			}
+			
+			obj.Destroy();
 		}
-		if(obj instanceof Movable) {
-			System.out.println(gMovable.remove(obj));
+		catch(Exception e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -113,14 +119,16 @@ public abstract class Scene {
 	}
 	
 	public void DestroyScene() {
-		 Iterator<GameObject> iter = gObjects.iterator();
-		 while(iter.hasNext()) {
-			 GameObject obj = iter.next();
-			 obj.Destroy();
-		 }
 		 for(int i = 0; i < gThread.size(); i++) {
 			 gThread.get(i).interrupt();
 		 }
+		
+		 Iterator<GameObject> iter = gObjects.iterator();
+		 while(iter.hasNext()) {
+			 GameObject obj = iter.next();
+			 if(obj != null)	obj.Destroy();
+		 }
+		 
 		 gObjects.clear();
 		 gRenderable.clear();
 		 gMovable.clear();

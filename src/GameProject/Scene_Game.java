@@ -21,8 +21,5 @@ public class Scene_Game extends Scene{
 		GLabel timerText = new GLabel("TIMETEXT ERROR", Main.WIDTH -150, 0,150, 50, 24, frame);
 		Addobj(timerText);
 		flowmgr.SetTimerText(timerText);
-		
-		GEntrant entrant = new GEntrant(flowmgr.entrantsDataMgr.getRandomEntrant(), this, flowmgr);
-		Addobj(entrant);
 	}
 }

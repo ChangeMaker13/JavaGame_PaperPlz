@@ -19,15 +19,7 @@ public class EntrantsDataMgr {
 	}
 	
 	public void LoadData() {
-		File datafile = new File(filePath);
-		Scanner fin = null;
-		try {
-			fin = new Scanner(new FileInputStream(datafile));
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			System.err.println("can not fine datafile of entrants");
-			e.printStackTrace();
-		}
+		Scanner fin = new Scanner(getClass().getClassLoader().getResourceAsStream("entrants_data.csv"));
 		
 		ReadCSV(fin);
 		for(EntrantData en : entrants) {
