@@ -6,22 +6,25 @@ import GameProject.Scene.SCENE_TYPE;
 
 public class GgameFlowMgr extends GameObject 
 implements Movable{
-	public static final int SECINDAY = 7;
-	public static final int MAXDAY = 10;
+	public static final int SECINDAY = 10;
+	public static final int MAXDAY = 2;
 
-	public EntrantsDataMgr entrantsDataMgr;
 	private int curday;
 	private Timer timer;
 	private GLabel timer_text;	//ref
 	private Scene game_scene; 	//ref
+	private EntrantsDataMgr entrantsDataMgr; //ref
 	
 	public GgameFlowMgr(Scene scene) {
 		super(Type.ETC);
 	//	curday = 1;
 		timer = new Timer();
 		timer.Start(SECINDAY);
-		entrantsDataMgr = new EntrantsDataMgr();
 		game_scene = scene;
+		entrantsDataMgr = (EntrantsDataMgr)Scene.common_info.get("datamgr");
+		
+		GEntrant entrant = new GEntrant(entrantsDataMgr.getRandomEntrant(), scene, this);
+		game_scene.Addobj(entrant);
 	}
 	
 	public void SetTimerText(GLabel label) {
@@ -30,7 +33,11 @@ implements Movable{
 	
 	@Override
 	public void Progress() {
-		TimeCheck();
+		try {
+			TimeCheck();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private void TimeCheck() {
@@ -38,13 +45,14 @@ implements Movable{
 			main_Routine.GetInstance().NextScene(SCENE_TYPE.ENDING);
 		}
 		else {
-		int remain = timer.GetRemain();
-		if(remain <= 0) {
-			Scene.common_info.put("day", (int)(Scene.common_info.get("day"))+1);
-			main_Routine.GetInstance().NextScene(SCENE_TYPE.DAY);	
-		}
-		String str = Scene.common_info.get("day") + " Day, " + Integer.toString(remain);
-		timer_text.resetText(str);
+			int remain = timer.GetRemain();
+			if(remain <= 0) {
+				Scene.common_info.put("day", (int)(Scene.common_info.get("day"))+1);
+				main_Routine.GetInstance().NextScene(SCENE_TYPE.DAY);	
+			}
+			String str = Scene.common_info.get("day") + " Day, " + Integer.toString(remain);
+			str = "<html><font color='white'>"+str+"</font></html>";
+			timer_text.resetText(str);
 		}
 	}
 	

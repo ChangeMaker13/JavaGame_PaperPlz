@@ -1,4 +1,5 @@
 package GameProject;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -26,6 +27,7 @@ public class main_Routine extends JPanel{
 		setLayout(null);
 		Scene.SetFrame(this);
 		scene = Scene.MakeScene(SCENE_TYPE.INTRO);
+		Scene.common_info.put("datamgr", new EntrantsDataMgr());
 	}
 	
 	public void paint(Graphics g) {

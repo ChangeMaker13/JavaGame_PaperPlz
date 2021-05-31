@@ -16,6 +16,7 @@ public class MainWindow extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setLocationRelativeTo(null);
+		setBackground(Color.BLACK);
 		setVisible(true);
 		setLayout(new GridLayout(1,1));
 

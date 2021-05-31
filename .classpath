@@ -8,5 +8,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="Image"/>
 	<classpathentry kind="src" path="GameData"/>
+	<classpathentry kind="src" path="Music"/>
+	<classpathentry kind="lib" path="JLayer1.0.1/jl1.0.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -44,10 +44,10 @@ public class GEntrant extends GameObject implements Renderable, Movable{
 			arrive = true;
 			
 			GPassport pass = new GPassport(data);
+			GJudge judge = new GJudge(scene, this, game_mgr);
+			
 			passport = pass;
 			scene.Addobj(pass);
-			
-			GJudge judge = new GJudge(scene, this, game_mgr);
 			scene.Addobj(judge);
 			
 			return;

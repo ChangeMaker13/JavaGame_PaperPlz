@@ -10,10 +10,16 @@ public class GPassport extends GameObject implements Renderable{
 	private final int OFFX = 450;
 	private final int OFFY = 100;
 	
+	private int stamp_x = OFFX+200;
+	private int stamp_y = OFFY+100;
+	private int stamp_width = 250;
+	private int stamp_height = 125;
+	
 	private EntrantData data;
 	Image passport_frame;
 	Image portrait;
 	Image stamp = null;
+
 	
 	public GPassport(EntrantData data) {
 		super(Type.ETC);
@@ -34,12 +40,22 @@ public class GPassport extends GameObject implements Renderable{
 		g.drawString("SEX:"+data.getSex(), OFFX+180, OFFY+190);
 		
 		if(stamp != null) {
-			g.drawImage(stamp, OFFX+200, OFFY+100, 250,125, null);
+			g.drawImage(stamp, stamp_x, stamp_y, stamp_width,stamp_height, null);
 		}
 	}
 	
 	public void SetStamp(Image stamp) {
 		this.stamp = stamp;
+	}
+	
+	public void SetStamp(Image stamp, boolean arrested) {
+		this.stamp = stamp;
+		if(arrested) {
+			 stamp_x = OFFX+100;
+			stamp_y = OFFY+70;
+			stamp_width = 400;
+			stamp_height = 300;
+		}
 	}
 	
 	public EntrantData getData() {
