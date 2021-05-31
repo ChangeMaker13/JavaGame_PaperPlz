@@ -52,14 +52,13 @@ public class EntrantsDataMgr {
 		return entrants.get(randomNumber);
 	}
 	
-	
-	public void whoiscriminal() {
-		criminalindex = (int)(Math.random()*entrants.size());
-	}
-	
-	public void iscriminal(int entrantindex) {
-		if(criminalindex == entrantindex) {
-			
+	public EntrantData getRandomPass(EntrantData origindata) {//mod
+		EntrantData pass = origindata;
+		if(Math.random() >= 0.8) {
+			while(pass.equals(origindata)) {
+				pass = getRandomEntrant();
+			}
 		}
+		return pass;
 	}
 }
