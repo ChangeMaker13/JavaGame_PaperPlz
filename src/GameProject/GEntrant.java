@@ -20,7 +20,8 @@ public class GEntrant extends GameObject implements Renderable, Movable{
 	
 	private Scene scene;	//ref
 	private GgameFlowMgr game_mgr;
-
+	private EntrantsDataMgr entrantsdatamgr = new EntrantsDataMgr();//mod
+	
 	public GEntrant(EntrantData data, Scene game_scene, GgameFlowMgr game_mgr) {
 		super(Type.ETC);
 		this.data = new EntrantData(data);
@@ -43,7 +44,7 @@ public class GEntrant extends GameObject implements Renderable, Movable{
 		if(scale >= 3) {
 			arrive = true;
 			
-			GPassport pass = new GPassport(data);
+			GPassport pass = new GPassport(entrantsdatamgr.getRandomPass(data));//mod
 			GJudge judge = new GJudge(scene, this, game_mgr);
 			
 			passport = pass;

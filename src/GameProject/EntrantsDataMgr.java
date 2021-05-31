@@ -47,19 +47,18 @@ public class EntrantsDataMgr {
 	
 	public EntrantData getRandomEntrant() {
 		int randomNumber = (int)(Math.random()*entrants.size());
-		while(randomNumber == 5)
+		while(randomNumber == 10)
 			randomNumber = (int)(Math.random()*entrants.size());
 		return entrants.get(randomNumber);
 	}
 	
-	
-	public void whoiscriminal() {
-		criminalindex = (int)(Math.random()*entrants.size());
-	}
-	
-	public void iscriminal(int entrantindex) {
-		if(criminalindex == entrantindex) {
-			
+	public EntrantData getRandomPass(EntrantData origindata) {//mod
+		EntrantData pass = origindata;
+		if(Math.random() >= 0.8) {
+			while(pass.equals(origindata)) {
+				pass = getRandomEntrant();
+			}
 		}
+		return pass;
 	}
 }
