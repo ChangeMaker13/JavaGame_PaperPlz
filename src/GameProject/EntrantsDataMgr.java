@@ -19,6 +19,7 @@ public class EntrantsDataMgr {
 	}
 	
 	public void LoadData() {
+		System.out.println("LoadData");
 		Scanner fin = new Scanner(getClass().getClassLoader().getResourceAsStream("entrants_data.csv"));
 		
 		ReadCSV(fin);

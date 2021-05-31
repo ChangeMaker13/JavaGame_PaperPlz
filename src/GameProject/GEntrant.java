@@ -20,7 +20,7 @@ public class GEntrant extends GameObject implements Renderable, Movable{
 	
 	private Scene scene;	//ref
 	private GgameFlowMgr game_mgr;
-	private EntrantsDataMgr entrantsdatamgr = new EntrantsDataMgr();//mod
+	private EntrantsDataMgr entrantsdatamgr;
 	
 	public GEntrant(EntrantData data, Scene game_scene, GgameFlowMgr game_mgr) {
 		super(Type.ETC);
@@ -28,6 +28,7 @@ public class GEntrant extends GameObject implements Renderable, Movable{
 		this.game_mgr = game_mgr;
 		image = new ImageIcon(getClass().getClassLoader().getResource(data.getName() + "_real.jpg")).getImage();
 		scene = game_scene;
+		entrantsdatamgr = (EntrantsDataMgr) Scene.common_info.get("datamgr");
 	}
 	
 	public boolean IsMathWithPassPort() {

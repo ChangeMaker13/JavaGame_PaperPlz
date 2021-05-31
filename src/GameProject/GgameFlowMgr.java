@@ -6,8 +6,8 @@ import GameProject.Scene.SCENE_TYPE;
 
 public class GgameFlowMgr extends GameObject 
 implements Movable{
-	public static final int SECINDAY = 60;
-	public static final int MAXDAY = 10;
+	public static final int SECINDAY = 30;
+	public static final int MAXDAY = 3;
 
 	private int curday;
 	private Timer timer;
