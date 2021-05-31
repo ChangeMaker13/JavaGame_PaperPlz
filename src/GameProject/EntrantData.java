@@ -1,6 +1,8 @@
 package GameProject;
 
-public class EntrantData {
+import java.io.Serializable;
+
+public class EntrantData implements Serializable{
 	private String name;
 	private String country;
 	private String city;

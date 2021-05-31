@@ -1,7 +1,12 @@
 package GameProject;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 public class Scene_Intro extends Scene {
@@ -21,11 +26,13 @@ public class Scene_Intro extends Scene {
 				(event) -> {
 					Scene.common_info.put("score", 0);
 					Scene.common_info.put("day", 1);
+					Scene.common_info.put("start", "normal");
+					
 					main_Routine.GetInstance().NextScene(SCENE_TYPE.DAY);
 				});
 		Addobj(startBtn);
 		
-		// 아래 button event 구현 안됨.
+		//end button
 		GButton endBtn = new GButton("intro_endBtn_normal.png",
 				"intro_endBtn_pressed.png", frame, 50, 210, 110, 80,
 				(event) -> {
@@ -33,24 +40,32 @@ public class Scene_Intro extends Scene {
 				});
 		Addobj(endBtn);
 		
+		//load button
 		GButton loadBtn = new GButton("intro_loadBtn_normal.png",
 				"intro_loadBtn_pressed.png", frame, 50, 130, 140, 80,
 				(event) -> {
-					boolean isExit = LoadInfo();
-					if(isExit)
+					Scene.common_info.put("start", "load");
+					boolean isExist = LoadInfo();
+					if(isExist)
 						main_Routine.GetInstance().NextScene(SCENE_TYPE.DAY);
 				});
 		Addobj(loadBtn);
 		
+		//help button
 		GButton helpBtn = new GButton("intro_helpBtn_normal.png",
 				"intro_helpBtn_pressed.png", frame, 930, 50, 40, 80,
 				(event) -> {
 					help_frame = new Scene_Help();
 				});
 		Addobj(helpBtn);
+		
+		//intro music
+		GMusic introMusic = new GMusic("intro.mp3", true);
+		Addobj(introMusic);
+		introMusic.Play();
 	}
 	
-	private boolean LoadInfo() {
+	private boolean LoadInfo()  {
 		Scanner fin = null;
 		try {
 			fin = new Scanner(new FileInputStream("saveinfo.txt"));
@@ -65,6 +80,20 @@ public class Scene_Intro extends Scene {
 		Scene.common_info.put("day", day);
 		
 		fin.close();
+		
+		try {
+			ObjectInputStream fobjout = new ObjectInputStream(new FileInputStream("criminalinfo"));
+			EntrantData criminalData = (EntrantData)fobjout.readObject();
+			common_info.put("criminal", criminalData);
+			fobjout.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
 		return true;
 	}
 }

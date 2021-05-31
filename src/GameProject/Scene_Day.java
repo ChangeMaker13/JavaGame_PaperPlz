@@ -3,6 +3,8 @@ package GameProject;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 
 import GameProject.Scene.SCENE_TYPE;
@@ -41,9 +43,17 @@ public class Scene_Day extends Scene{
 		Addobj(nextBtn);
 		
 		//ciriminal data generate
-		EntrantsDataMgr datamgr =  (EntrantsDataMgr) Scene.common_info.get("datamgr");
-		EntrantData ciriminalData = datamgr.getRandomEntrant();
-		Scene.common_info.put("criminal", ciriminalData);
+		EntrantData ciriminalData = null;
+		if(!Scene.common_info.get("start").equals("load")) {
+			EntrantsDataMgr datamgr =  (EntrantsDataMgr) Scene.common_info.get("datamgr");
+			ciriminalData = datamgr.getRandomEntrant();
+			Scene.common_info.put("criminal", ciriminalData);
+		}
+		else {
+			Scene.common_info.put("start", "normal");
+			ciriminalData = (EntrantData) Scene.common_info.get("criminal");
+			Scene.common_info.put("criminal", ciriminalData);
+		}
 		
 		//wanted image
 		GImage wantedImage = new GImage("wanted.jpg", 
@@ -69,5 +79,16 @@ public class Scene_Day extends Scene{
 		String day = Scene.common_info.get("day").toString();
 		fout.println(score + " " + day);
 		fout.close();
+		
+		file = new File("criminalinfo");
+		try {
+			ObjectOutputStream fobjout = new ObjectOutputStream(new FileOutputStream(file));
+			fobjout.writeObject(Scene.common_info.get("criminal"));
+			fobjout.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
