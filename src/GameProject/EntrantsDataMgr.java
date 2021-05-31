@@ -47,7 +47,7 @@ public class EntrantsDataMgr {
 	
 	public EntrantData getRandomEntrant() {
 		int randomNumber = (int)(Math.random()*entrants.size());
-		while(randomNumber == 5)
+		while(randomNumber == 10)
 			randomNumber = (int)(Math.random()*entrants.size());
 		return entrants.get(randomNumber);
 	}
